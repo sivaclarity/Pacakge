@@ -23,13 +23,13 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class PackageFull {
-	public WebDriver driver;
+	public WebDriver driver=null;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 	private JavascriptExecutor js;
 
-	//@BeforeClass(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -98,11 +98,14 @@ public class PackageFull {
 		driver.findElement(By.xpath("//div[@class='custom-control custom-checkbox']")).click();
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		//driver.quit();
+	
 	}
 	@AfterClass(alwaysRun = true)
 	
 	public void close()
 	{
+		if(driver!=null)
 		driver.quit();
 	}
-}
+
+		
