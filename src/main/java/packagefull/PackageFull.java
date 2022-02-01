@@ -29,7 +29,7 @@ public class PackageFull {
 	private StringBuffer verificationErrors = new StringBuffer();
 	private JavascriptExecutor js;
 
-	@BeforeClass(alwaysRun = true)
+	//@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -97,5 +97,12 @@ public class PackageFull {
 		driver.findElement(By.xpath("(//input[@class='form-control'])[4]")).sendKeys("pondy");
 		driver.findElement(By.xpath("//div[@class='custom-control custom-checkbox']")).click();
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		//driver.quit();
+	}
+	@AfterClass(alwaysRun = true)
+	
+	public void close()
+	{
 		driver.quit();
 	}
+}
